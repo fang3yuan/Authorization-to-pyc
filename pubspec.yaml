@@ -1,0 +1,20 @@
+name: py_to_pyc_app
+description: Simple Flutter app to upload .py files and get .pyc back
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.17.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  http: ^0.13.5
+  file_picker: ^5.2.2
+  path_provider: ^2.0.11
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
