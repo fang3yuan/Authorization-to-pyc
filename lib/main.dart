@@ -31,8 +31,8 @@ class _PyToPycPageState extends State<PyToPycPage> {
   String status = 'لم يتم اختيار ملف بعد';
   String? downloadPath;
 
-  final String apiUrl = 'https://your-flask-server.com/upload'; // غيّر هذا إلى رابط سيرفرك
-
+  final String apiUrl = 'https://beb97cf8-5095-450d-880c-57dd6cec2acd-00-17qhujgbbpxfh.pike.replit.dev/upload';
+  
   Future<void> pickFile() async {
     final result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
@@ -62,7 +62,6 @@ class _PyToPycPageState extends State<PyToPycPage> {
     try {
       var request = http.MultipartRequest('POST', Uri.parse(apiUrl));
       request.files.add(await http.MultipartFile.fromPath('file', selectedFile!.path));
-
       var response = await request.send();
 
       if (response.statusCode == 200) {
@@ -113,7 +112,7 @@ class _PyToPycPageState extends State<PyToPycPage> {
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  // يمكن إضافة فتح الملف أو مشاركته هنا حسب الحاجة
+                  // يمكن إضافة فتح الملف أو مشاركته هنا
                 },
                 child: const Text('فتح الملف الناتج'),
               ),
