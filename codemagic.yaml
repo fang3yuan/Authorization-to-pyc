@@ -4,16 +4,14 @@ workflows:
     max_build_duration: 30
     environment:
       flutter: stable
-      vars:
-        FLUTTER_CHANNEL: stable
-      android_signing:
-        - my_keystore
-      groups:
-        - google_play
-      languages:
-        python: "3.8"
     scripts:
-      - name: Install dependencies
+      - name: Install Python 3.8
+        script: |
+          sudo apt update
+          sudo apt install -y python3.8 python3.8-distutils
+          sudo ln -sf /usr/bin/python3.8 /usr/local/bin/python3
+          python3 --version
+      - name: Install Flutter dependencies
         script: |
           flutter pub get
       - name: Build APK
@@ -21,11 +19,3 @@ workflows:
           flutter build apk --release
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
-
-secrets:
-  android_signing:
-    my_keystore:
-      keystore: EncryptedKeystore== 
-      keystore_password: your_keystore_password
-      key_alias: your_key_alias
-      key_password: your_key_password
