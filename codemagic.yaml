@@ -1,9 +1,11 @@
 workflows:
   build-android:
-    name: Build Android APK
+    name: Build Android
     environment:
       flutter: stable
       xcode: latest
+      vars:
+        FLUTTER_BUILD_MODE: release
     scripts:
       - name: Get dependencies
         script: flutter pub get
