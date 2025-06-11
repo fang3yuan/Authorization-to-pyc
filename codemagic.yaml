@@ -1,21 +1,13 @@
 workflows:
-  build_apk:
-    name: Build Flutter APK
-    max_build_duration: 30
+  build-android:
+    name: Build Android APK
     environment:
       flutter: stable
+      xcode: latest
     scripts:
-      - name: Install Python 3.8
-        script: |
-          sudo apt update
-          sudo apt install -y python3.8 python3.8-distutils
-          sudo ln -sf /usr/bin/python3.8 /usr/local/bin/python3
-          python3 --version
-      - name: Install Flutter dependencies
-        script: |
-          flutter pub get
+      - name: Get dependencies
+        script: flutter pub get
       - name: Build APK
-        script: |
-          flutter build apk --release
+        script: flutter build apk
     artifacts:
       - build/app/outputs/flutter-apk/app-release.apk
